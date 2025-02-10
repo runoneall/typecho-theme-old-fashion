@@ -43,11 +43,6 @@
 </head>
 
 <body>
-
-    <?php if (isMSIE()): ?>
-        <h1>You are using Microsoft IE browser, some functions will be limited!</h1>
-    <?php endif; ?>
-
     <div id="outbox">
         <div id="header" class="clearfix">
             <div class="container">

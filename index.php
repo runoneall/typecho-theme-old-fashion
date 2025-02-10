@@ -2,10 +2,10 @@
 /**
  * 复古主题
  *
- * @package Old Fasion Theme
- * @author MrXiaoM Runoneall
+ * @package Old Fasion Theme (R1a改)
+ * @author Runoneall
  * @version 1.0
- * @link https://datafa.de/
+ * @link https://r1a.rr.nu/
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__'))
