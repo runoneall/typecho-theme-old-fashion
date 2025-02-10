@@ -1,6 +1,6 @@
 <?php
 /**
- * 复古主题
+ * 复古主题, 基于 MrXiaoM/typecho-theme-old-fashion 修改
  *
  * @package Old Fasion Theme (R1a改)
  * @author Runoneall
