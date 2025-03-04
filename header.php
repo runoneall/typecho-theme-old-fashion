@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/normalize.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/grid.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/highlight.css'); ?>">
-
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/global.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/search.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/sidebar.css'); ?>">
@@ -36,6 +35,7 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/comment.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/misc.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/page.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/footer.css'); ?>">
 
     <!-- 设置favicon -->
     <link rel="shortcut icon" href="/favicon.ico">
@@ -98,8 +98,8 @@
                             print ('<br/>');
                             $this->options->extraSideHtml();
                         endif;
-                        ?>
-                        <br><button id="dark-btn" onclick="changeDarkMode()">更换主题</button>
+                        ?><br>
+                        <button id="dark-btn" onclick="changeDarkMode()">更换主题</button>
             </div>
 
             <?php if ($this->options->showRecentPosts): ?>
