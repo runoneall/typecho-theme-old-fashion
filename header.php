@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/misc.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/page.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/footer.css'); ?>">
+    <link id="dark-style" rel="stylesheet" href="<?php $this->options->themeUrl('style/dark.css'); ?>" disabled>
 
     <!-- 设置favicon -->
     <link rel="shortcut icon" href="/favicon.ico">

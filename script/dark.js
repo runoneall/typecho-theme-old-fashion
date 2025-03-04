@@ -1,15 +1,10 @@
 function changeDarkMode() {
-    const head = document.getElementsByTagName('head')[0];
-    const darkStyle = document.getElementById('dark-style');
-    if (darkStyle) {
-        head.removeChild(darkStyle);
+    const darkStyle = document.querySelector('link#dark-style');
+    if (darkStyle.disabled == false) {
+        darkStyle.disabled = true;
         document.cookie = 'colorScheme=light; path=/; expires=0';
     } else {
-        const link = document.createElement('link');
-        link.id = 'dark-style';
-        link.rel = 'stylesheet';
-        link.href = darkStyleLink;
-        head.appendChild(link);
+        darkStyle.disabled = false;
         document.cookie = 'colorScheme=dark; path=/; expires=0';
     }
 }
