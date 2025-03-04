@@ -4,7 +4,7 @@
  *
  * @package Old Fasion Theme (R1a改)
  * @author Runoneall
- * @version 1.0
+ * @version 1.3
  * @link https://dev.oneall.eu.org/
  */
 
