@@ -35,7 +35,7 @@ function themeConfig($form)
         'postMaxSymbols',
         null,
         '150',
-        _t('文章最大字数')
+        _t('简介文章最大字数')
     );
     $form->addInput($postMaxSymbols);
 
