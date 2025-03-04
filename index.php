@@ -5,7 +5,7 @@
  * @package Old Fasion Theme (R1a改)
  * @author Runoneall
  * @version 1.0
- * @link https://r1a.rr.nu/
+ * @link https://dev.oneall.eu.org/
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__'))

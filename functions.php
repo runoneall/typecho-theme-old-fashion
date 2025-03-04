@@ -21,7 +21,6 @@ function themeConfig($form)
         _t('站点 LOGO 地址'),
         _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO')
     );
-
     $form->addInput($logoUrl);
 
     $extraSideHtml = new \Typecho\Widget\Helper\Form\Element\Textarea(
@@ -30,8 +29,15 @@ function themeConfig($form)
         null,
         _t('侧边栏额外html')
     );
-
     $form->addInput($extraSideHtml);
+
+    $postMaxSymbols = new \Typecho\Widget\Helper\Form\Element\Text(
+        'postMaxSymbols',
+        null,
+        '150',
+        _t('文章最大字数')
+    );
+    $form->addInput($postMaxSymbols);
 
     $siteIntroduce = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'siteIntroduce',
@@ -39,7 +45,6 @@ function themeConfig($form)
         null,
         _t('随机站点介绍, 每行一个')
     );
-
     $form->addInput($siteIntroduce);
 
     $siteOutLinks = new \Typecho\Widget\Helper\Form\Element\Textarea(
@@ -48,7 +53,6 @@ function themeConfig($form)
         null,
         _t('链接页面JSON')
     );
-
     $form->addInput($siteOutLinks);
 
     $showRecentPosts = new \Typecho\Widget\Helper\Form\Element\Text(
@@ -58,6 +62,7 @@ function themeConfig($form)
         _t('显示最新文章'),
         _t('填写字符修改标题，留空为不显示')
     );
+    $form->addInput($showRecentPosts);
 
     $showRecentComments = new \Typecho\Widget\Helper\Form\Element\Text(
         'showRecentComments',
@@ -66,6 +71,8 @@ function themeConfig($form)
         _t('显示最近回复'),
         _t('填写字符修改标题，留空为不显示')
     );
+    $form->addInput($showRecentComments);
+
     $showCategory = new \Typecho\Widget\Helper\Form\Element\Text(
         'showCategory',
         null,
@@ -73,6 +80,8 @@ function themeConfig($form)
         _t('显示分类'),
         _t('填写字符修改标题，留空为不显示')
     );
+    $form->addInput($showCategory);
+
     $showArchive = new \Typecho\Widget\Helper\Form\Element\Text(
         'showArchive',
         null,
@@ -80,6 +89,8 @@ function themeConfig($form)
         _t('显示归档'),
         _t('填写字符修改标题，留空为不显示')
     );
+    $form->addInput($showArchive);
+
     $showOther = new \Typecho\Widget\Helper\Form\Element\Text(
         'showOther',
         null,
@@ -87,12 +98,7 @@ function themeConfig($form)
         _t('显示其它杂项'),
         _t('填写字符修改标题，留空为不显示')
     );
-    $form->addInput($showRecentPosts);
-    $form->addInput($showRecentComments);
-    $form->addInput($showCategory);
-    $form->addInput($showArchive);
     $form->addInput($showOther);
-
 
     $extraStyle = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'extraStyle',
@@ -100,20 +106,21 @@ function themeConfig($form)
         null,
         _t('额外css')
     );
+    $form->addInput($extraStyle);
+
     $extraScript = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'extraScript',
         null,
         null,
         _t('额外javascript (footer)')
     );
+    $form->addInput($extraScript);
+
     $extraHtml = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'extraHtml',
         null,
         null,
         _t('额外html (body末尾)')
     );
-
-    $form->addInput($extraStyle);
-    $form->addInput($extraScript);
     $form->addInput($extraHtml);
 }
