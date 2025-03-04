@@ -1,5 +1,4 @@
 function changeDarkMode() {
-    console.log(darkStyleLink);
     const head = document.getElementsByTagName('head')[0];
     const darkStyle = document.getElementById('dark-style');
     if (darkStyle) {
