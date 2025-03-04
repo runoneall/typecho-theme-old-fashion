@@ -24,11 +24,18 @@
         'author' => _t('%s 发布的文章')
     ], '', ' - '); ?><?php $this->options->title(); ?></title>
 
-    <!-- 使用url函数转换相关路径 -->
+    <!-- 主题CSS依赖 -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/normalize.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/grid.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/style.css'); ?>">
     <link rel="stylesheet" href="<?php $this->options->themeUrl('style/highlight.css'); ?>">
+
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/global.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/search.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/sidebar.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/post.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/comment.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/misc.css'); ?>">
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('style/page.css'); ?>">
 
     <!-- 设置favicon -->
     <link rel="shortcut icon" href="/favicon.ico">
