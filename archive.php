@@ -27,7 +27,7 @@
                     </li>
                 </ul>
                 <div class="post-content" itemprop="articleBody">
-                    <?php $this->excerpt(150, '...'); ?>
+                    <?php $this->excerpt((int)$this->options->postMaxSymbols, '...'); ?>
                 </div>
             </article>
         <?php endwhile; ?>
