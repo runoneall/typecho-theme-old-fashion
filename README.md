@@ -15,7 +15,6 @@
 - 代码高亮支持
 
 # 友链写法
-- [在Typecho中加入自定义的友链功能](https://dev.oneall.eu.org/archives/32/)
 新增links独立页面
 
 ```html
