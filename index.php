@@ -32,7 +32,7 @@ $this->need('header.php');
                 </li>
             </ul>
             <div class="post-content index-post-content" itemprop="articleBody">
-                <?php $this->excerpt((int)$this->options->postMaxSymbols, '...'); ?>
+                <?php $this->excerpt((int) $this->options->postMaxSymbols, '...'); ?>
             </div>
         </article>
     <?php endwhile; ?>
