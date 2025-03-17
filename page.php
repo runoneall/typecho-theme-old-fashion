@@ -21,12 +21,9 @@
 
 <!-- 在链接页面引入额外js -->
 <?php if ($this->is('page', 'links')): ?>
+    <script src="<?php $this->options->themeUrl('script/links.js'); ?>"></script>
     <script>
-        let linkItemsHTML = "";
-        for (const JsonItem of JSON.parse(`<?php $this->options->siteOutLinks() ?>`)) {
-            linkItemsHTML += `<div class="link-item"><img class="link-item-avatar" src="${JsonItem.avatar}"><div class="link-item-content"><a href="${JsonItem.url}" target="_blank"><h2>${JsonItem.title}</h2></a><p>${JsonItem.description}</p></div></div>`;
-        }
-        document.getElementById('linkItemsArea').innerHTML = linkItemsHTML;
+        putLinks(`<?php $this->options->siteOutLinks() ?>`);
     </script>
 <?php endif; ?>
 
