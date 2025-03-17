@@ -1,30 +1,36 @@
 function xhrGet(url) {
-    try {
+    return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://dev.oneall.eu.org/netdrive.php/" + url, false);
+        xhr.open('GET', "https://dev.oneall.eu.org/netdrive.php/" + url, true);
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.responseText);
+            } else {
+                reject(new Error(`HTTP Error: ${xhr.status}`));
+            }
+        };
+        xhr.onerror = function () {
+            reject(new Error('Network Error'));
+        };
         xhr.send();
-        return xhr.responseText;
-    } catch (e) {
-        console.error(e);
-        return null;
-    }
+    });
 }
 
-function putRss(linkItemsArea, rssLinkItems) {
+async function putRss(linkItemsArea, rssLinkItems) {
     let rssItemsHtml = "";
     rssItemsHtml += `<hr><div class="links-rss"><h2>近期更新</h2><ul>`;
     for (const rssLinkItem of rssLinkItems) {
         rssItemsHtml += `<li><pre>${rssLinkItem}</pre></li>`;
-        if (xhrGet(rssLinkItem)) {
-            console.log('RSS 链接有效:' + rssLinkItem);
-        }
+        xhrGet(rssLinkItem)
+            .then(() => console.log('RSS 链接有效:' + rssLinkItem))
+            .catch(() => { });
     }
     rssItemsHtml += `</ul></div>`;
     linkItemsArea.innerHTML += rssItemsHtml;
 }
 
 function putLinks(link_json) {
-    const linkItemsArea = document.getElementById('linkItemsArea')
+    const linkItemsArea = document.getElementById('linkItemsArea');
     let linkItemsHTML = "";
     let rssLinkItems = [];
     for (const linkItem of JSON.parse(link_json)) {
@@ -34,7 +40,5 @@ function putLinks(link_json) {
         }
     }
     linkItemsArea.innerHTML = linkItemsHTML;
-    putRss(linkItemsArea, rssLinkItems);
+    setTimeout(() => putRss(linkItemsArea, rssLinkItems), 0);
 }
-
-// http://localhost:8501/index.php/links.html
