@@ -33,3 +33,7 @@
 .link-item-content {
     height: 100%;
 }
+
+#linkItemsArea .links-rss {
+    grid-column: 1 / -1;
+}
