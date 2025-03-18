@@ -17,16 +17,42 @@ function xhrGet(url) {
 }
 
 async function putRss(linkItemsArea, rssLinkItems) {
-    let rssItemsHtml = "";
-    rssItemsHtml += `<hr><div class="links-rss"><h2>近期更新</h2><ul>`;
+    if (rssLinkItems.length === 0) {
+        return;
+    }
+    linkItemsArea.innerHTML += `<hr><div id="links-rss"><h2>近期更新</h2><ul></ul></div>`;
+    const rssItemsArea = linkItemsArea.querySelector('#links-rss ul');
     for (const rssLinkItem of rssLinkItems) {
-        rssItemsHtml += `<li><pre>${rssLinkItem}</pre></li>`;
         xhrGet(rssLinkItem)
-            .then(() => console.log('RSS 链接有效:' + rssLinkItem))
+            .then(xmlString => {
+                const xmlStringParser = new DOMParser();
+                const xmlDoc = xmlStringParser.parseFromString(xmlString, 'text/xml');
+                atomFeed = xmlDoc.getElementsByTagName('feed');
+                rssFeed = xmlDoc.getElementsByTagName('rss');
+                if (atomFeed.length > 0) {
+                    const blogName = atomFeed[0].getElementsByTagName('title')[0].textContent;
+                    rssItemsArea.innerHTML += `<h3>${blogName}:</h3>`;
+                    const first10Items = [...atomFeed[0].getElementsByTagName('entry')].slice(0, 10);
+                    first10Items.forEach(item => {
+                        const blog_title = item.getElementsByTagName('title')[0].textContent;
+                        const blog_link = item.getElementsByTagName('link')[0].getAttribute('href');
+                        rssItemsArea.innerHTML += `<li><a href="${blog_link}" target="_blank">${blog_title}</a></li>`
+                    });
+                } else if (rssFeed.length > 0) {
+                    const blogName = rssFeed[0].getElementsByTagName('title')[0].textContent;
+                    rssItemsArea.innerHTML += `<h3>${blogName}:</h3>`;
+                    const first10Items = [...rssFeed[0].getElementsByTagName('item')].slice(0, 10);
+                    first10Items.forEach(item => {
+                        const blog_title = item.getElementsByTagName('title')[0].textContent;
+                        const blog_link = item.getElementsByTagName('link')[0].textContent;
+                        rssItemsArea.innerHTML += `<li><a href="${blog_link}" target="_blank">${blog_title}</a></li>`
+                    });
+                } else {
+                    console.log('Unknown feed type ' + rssLinkItem);
+                }
+            })
             .catch(() => { });
     }
-    rssItemsHtml += `</ul></div>`;
-    linkItemsArea.innerHTML += rssItemsHtml;
 }
 
 function putLinks(link_json) {
