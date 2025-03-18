@@ -1,13 +1,13 @@
 #linkItemsArea {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
 @media screen and (max-width: 700px) {
     #linkItemsArea {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -34,6 +34,6 @@
     height: 100%;
 }
 
-#linkItemsArea .links-rss {
+#linkItemsArea #links-rss {
     grid-column: 1 / -1;
 }

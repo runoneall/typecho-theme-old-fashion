@@ -56,10 +56,11 @@ async function putRss(linkItemsArea, rssLinkItems) {
 }
 
 function putLinks(link_json) {
+    const linkJson = JSON.parse(link_json);
     const linkItemsArea = document.getElementById('linkItemsArea');
     let linkItemsHTML = "";
     let rssLinkItems = [];
-    for (const linkItem of JSON.parse(link_json)) {
+    for (const linkItem of linkJson) {
         linkItemsHTML += `<div class="link-item"><img class="link-item-avatar" src="${linkItem.avatar}"><div class="link-item-content"><a href="${linkItem.url}" target="_blank"><h2>${linkItem.title}</h2></a><p>${linkItem.description}</p></div></div>`;
         if (linkItem.rss) {
             rssLinkItems.push(linkItem.rss);
