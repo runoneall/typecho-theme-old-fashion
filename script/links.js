@@ -20,7 +20,7 @@ async function putRss(linkItemsArea, rssLinkItems) {
     if (rssLinkItems.length === 0) {
         return;
     }
-    linkItemsArea.innerHTML += `<hr><div id="links-rss"><h2>近期更新</h2><ul></ul></div>`;
+    linkItemsArea.innerHTML += `<div id="links-rss"><h2>近期更新</h2><ul></ul></div>`;
     const rssItemsArea = linkItemsArea.querySelector('#links-rss ul');
     for (const rssLinkItem of rssLinkItems) {
         xhrGet(rssLinkItem)
