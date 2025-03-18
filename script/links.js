@@ -20,8 +20,8 @@ async function putRss(linkItemsArea, rssLinkItems) {
     if (rssLinkItems.length === 0) {
         return;
     }
-    linkItemsArea.innerHTML += `<div id="links-rss"><h2>近期更新</h2><ul></ul></div>`;
-    const rssItemsArea = linkItemsArea.querySelector('#links-rss ul');
+    linkItemsArea.innerHTML += `<div id="links-rss"><h2>近期更新</h2><div></div></div>`;
+    const rssItemsArea = linkItemsArea.querySelector('#links-rss div:last-child');
     for (const rssLinkItem of rssLinkItems) {
         xhrGet(rssLinkItem)
             .then(xmlString => {
@@ -31,21 +31,25 @@ async function putRss(linkItemsArea, rssLinkItems) {
                 rssFeed = xmlDoc.getElementsByTagName('rss');
                 if (atomFeed.length > 0) {
                     const blogName = atomFeed[0].getElementsByTagName('title')[0].textContent;
-                    rssItemsArea.innerHTML += `<h3>${blogName}:</h3>`;
+                    const ulItem = document.createElement('ul');
+                    rssItemsArea.appendChild(ulItem);
+                    ulItem.innerHTML += `<h3>${blogName}:</h3>`;
                     const first10Items = [...atomFeed[0].getElementsByTagName('entry')].slice(0, 10);
                     first10Items.forEach(item => {
                         const blog_title = item.getElementsByTagName('title')[0].textContent;
                         const blog_link = item.getElementsByTagName('link')[0].getAttribute('href');
-                        rssItemsArea.innerHTML += `<li><a href="${blog_link}" target="_blank">${blog_title}</a></li>`
+                        ulItem.innerHTML += `<li><a href="${blog_link}" target="_blank">${blog_title}</a></li>`
                     });
                 } else if (rssFeed.length > 0) {
                     const blogName = rssFeed[0].getElementsByTagName('title')[0].textContent;
-                    rssItemsArea.innerHTML += `<h3>${blogName}:</h3>`;
+                    const ulItem = document.createElement('ul');
+                    rssItemsArea.appendChild(ulItem);
+                    ulItem.innerHTML += `<h3>${blogName}:</h3>`;
                     const first10Items = [...rssFeed[0].getElementsByTagName('item')].slice(0, 10);
                     first10Items.forEach(item => {
                         const blog_title = item.getElementsByTagName('title')[0].textContent;
                         const blog_link = item.getElementsByTagName('link')[0].textContent;
-                        rssItemsArea.innerHTML += `<li><a href="${blog_link}" target="_blank">${blog_title}</a></li>`
+                        ulItem.innerHTML += `<li><a href="${blog_link}" target="_blank">${blog_title}</a></li>`
                     });
                 } else {
                     console.log('Unknown feed type ' + rssLinkItem);

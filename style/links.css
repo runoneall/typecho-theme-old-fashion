@@ -5,12 +5,6 @@
     gap: 10px;
 }
 
-@media screen and (max-width: 700px) {
-    #linkItemsArea {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
 .link-item {
     height: 100px;
     overflow: hidden;
@@ -36,4 +30,21 @@
 
 #linkItemsArea #links-rss {
     grid-column: 1 / -1;
+}
+
+#links-rss div:last-child {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    #linkItemsArea {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #links-rss div:last-child {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
