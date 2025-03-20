@@ -1,7 +1,7 @@
 function xhrGet(url) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://dev.oneall.eu.org/netdrive.php/" + url, true);
+        xhr.open('GET', CORS_DRIVER + url, true);
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
                 resolve(xhr.responseText);
