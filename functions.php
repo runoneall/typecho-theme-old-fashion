@@ -39,6 +39,15 @@ function themeConfig($form)
     );
     $form->addInput($postMaxSymbols);
 
+    $corsProvider = new \Typecho\Widget\Helper\Form\Element\Text(
+        'corsProvider',
+        null,
+        '',
+        _t('CORS跨域代理'),
+        _t('跨域代理地址, 留空为使用默认, 请求URL将会拼接到此代理地址之后')
+    );
+    $form->addInput($corsProvider);
+
     $siteIntroduce = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'siteIntroduce',
         null,

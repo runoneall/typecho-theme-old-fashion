@@ -23,7 +23,8 @@
 <?php if ($this->is('page', 'links')): ?>
     <script src="<?php $this->options->themeUrl('script/links.js'); ?>"></script>
     <script>
-        CORS_DRIVER = '<?php $this->options->themeUrl('netdrive.php/'); ?>';
+        CORS_DRIVER = '<?php $corsProvider = $this->options->corsProvider;
+        echo ($corsProvider == '') ? $this->options->themeUrl . '/netdrive.php/' : $corsProvider; ?>';
         putLinks(`<?php $this->options->siteOutLinks() ?>`);
     </script>
 <?php endif; ?>
