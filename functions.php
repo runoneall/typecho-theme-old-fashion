@@ -4,12 +4,16 @@ if (!defined('__TYPECHO_ROOT_DIR__'))
 
 function themeInit($self)
 {
-    $postsCount = $self->size(
-        $self->select()
-            ->where('table.contents.status = ?', 'publish')
-            ->where('table.contents.type = ?', 'post')
-    );
-    $self->parameter->pageSize = $postsCount;
+    $options = Typecho_Widget::widget('Widget_Options');
+    $postsPerPage = intval($options->postsPerPage);
+    if ($postsPerPage == 0) {
+        $postsPerPage = $self->size(
+            $self->select()
+                ->where('table.contents.status = ?', 'publish')
+                ->where('table.contents.type = ?', 'post')
+        );
+    }
+    $self->parameter->pageSize = $postsPerPage;
 }
 
 function themeConfig($form)
@@ -63,6 +67,15 @@ function themeConfig($form)
         _t('链接页面JSON')
     );
     $form->addInput($siteOutLinks);
+
+    $postsPerPage = new \Typecho\Widget\Helper\Form\Element\Text(
+        'postsPerPage',
+        null,
+        '0',
+        _t('一页显示文章总数'),
+        _t('输入数字, 0为全部')
+    );
+    $form->addInput($postsPerPage);
 
     $showRecentPosts = new \Typecho\Widget\Helper\Form\Element\Text(
         'showRecentPosts',
